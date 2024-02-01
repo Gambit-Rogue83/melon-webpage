@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{{url_for('static', filename='reset.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='site.css')}}"> -->
+    <title>Melon Mall</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    <h1>Look at my large melons</h1>
+
+    <main>
+        {% block body %}
+        <div id="melon-list">
+        {% for melon in melon_list %}
+            <div class="cart text-center">
+                <img src="{{ melon.image_url}}" alt="" class="melon-image">
+                <h5>
+                    <a href="{{url_for('single_melon', melon_id=melon.melon_id )}}"> {{ melon.common_name}}</a>
+                </h5>
+                {{ melon.price_str() }}
+            </div>
+        {% endfor %}
+        </div>
+        {% endblock %}
+    </main>
+</body>
+</html>
